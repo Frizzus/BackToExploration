@@ -3,7 +3,10 @@ from lib.dimension import CheckerBoard
 
 # suppression du datapack précédent
 
-shutil.rmtree("bte")
+try:
+    shutil.rmtree("bte")
+except:
+    print("bte datapack not found, creating one")
 
 # création du template du datapack
 
@@ -26,5 +29,12 @@ mc_meta.write(
 debug_dim:CheckerBoard = CheckerBoard("3", ["minecraft:forest", "minecraft:meadow"])
 debug_dim.create_dim("bte/minecraft/dimension/overworld.json")
 
+print("basic template loaded")
+
 shutil.copytree("assets/configured_feature", "bte/data/worldgen/configured_feature", dirs_exist_ok=True)
+print("configured features loaded")
+
 shutil.copytree("assets/placed_feature", "bte/data/worldgen/placed_feature", dirs_exist_ok=True)
+print("placed features loaded")
+
+print("datapack created")
