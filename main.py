@@ -22,5 +22,9 @@ mc_meta.write(
     }
 }""")
 
+# soon to be replaced by a simple overworld.json in the assets
 debug_dim:CheckerBoard = CheckerBoard("3", ["minecraft:forest", "minecraft:meadow"])
 debug_dim.create_dim("bte/minecraft/dimension/overworld.json")
+
+shutil.copytree("assets/configured_feature", "bte/data/worldgen/configured_feature", dirs_exist_ok=True)
+shutil.copytree("assets/placed_feature", "bte/data/worldgen/placed_feature", dirs_exist_ok=True)
