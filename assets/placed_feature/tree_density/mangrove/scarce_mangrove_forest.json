@@ -1,0 +1,55 @@
+{
+    "feature": "bte:trees/mangrove_trees",
+    "placement": [
+      {
+        "type": "minecraft:count",
+        "count": {
+          "type": "weighted_list",
+          "distribution": [
+              {
+                  "weight": 10,
+                  "data": 1
+              },
+              {
+                  "weight": 10,
+                  "data": 2
+              },
+              {
+                  "weight": 10,
+                  "data": 3
+              },
+              {
+                  "weight": 70,
+                  "data": 0
+              }
+          ]
+      }
+      },
+      {
+        "type": "minecraft:in_square"
+      },
+      {
+        "type": "minecraft:surface_water_depth_filter",
+        "max_water_depth": 5
+      },
+      {
+        "type": "minecraft:heightmap",
+        "heightmap": "OCEAN_FLOOR"
+      },
+      {
+        "type": "minecraft:block_predicate_filter",
+        "predicate": {
+          "type": "minecraft:would_survive",
+          "state": {
+            "Name": "minecraft:mangrove_propagule",
+            "Properties": {
+              "age": "0",
+              "hanging": "false",
+              "stage": "0",
+              "waterlogged": "false"
+            }
+          }
+        }
+      }
+    ]
+  }

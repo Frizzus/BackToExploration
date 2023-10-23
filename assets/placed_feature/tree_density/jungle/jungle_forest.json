@@ -1,0 +1,46 @@
+{
+    "feature": "minecraft:trees_jungle",
+    "placement": [
+        {
+            "type": "count",
+            "count": {
+                "type": "weighted_list",
+                "distribution": [
+                    {
+                        "weight": 90,
+                        "data": 10
+                    },
+                    {
+                        "weight": 5,
+                        "data": 0
+                    },
+                    {
+                        "weight": 5,
+                        "data": 1
+                    }
+                ]
+            }
+        },
+        {
+            "type": "in_square"
+        },
+        {
+            "type": "heightmap",
+            "heightmap": "WORLD_SURFACE"
+        },
+        {
+            "type": "block_predicate_filter",
+            "predicate": {
+                "type": "matching_blocks",
+                "offset": [
+                    0,
+                    -1,
+                    0
+                ],
+                "blocks": [
+                    "grass_block"
+                ]
+            }
+        }
+    ]
+}

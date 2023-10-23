@@ -1,0 +1,42 @@
+{
+    "feature": "bte:trees/savanna_trees",
+    "placement": [
+        {
+            "type": "count",
+            "count": {
+                "type": "weighted_list",
+                "distribution": [
+                    {
+                        "weight": 90,
+                        "data": 20
+                    },
+                    {
+                        "weight": 10,
+                        "data": 0
+                    }
+                ]
+            }
+        },
+        {
+            "type": "in_square"
+        },
+        {
+            "type": "heightmap",
+            "heightmap": "WORLD_SURFACE"
+        },
+        {
+            "type": "block_predicate_filter",
+            "predicate": {
+                "type": "matching_blocks",
+                "offset": [
+                    0,
+                    -1,
+                    0
+                ],
+                "blocks": [
+                    "grass_block"
+                ]
+            }
+        }
+    ]
+}

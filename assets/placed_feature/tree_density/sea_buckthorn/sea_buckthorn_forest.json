@@ -1,0 +1,47 @@
+{
+    "feature": "bte:tree/sea_buckthorn",
+    "placement": [
+      {
+        "type": "minecraft:count",
+        "count": {
+            "type": "weighted_list",
+            "distribution": [
+                {
+                    "weight": 90,
+                    "data": 10
+                },
+                {
+                    "weight": 5,
+                    "data": 0
+                },
+                {
+                    "weight": 5,
+                    "data": 1
+                }
+            ]
+        }
+      },
+      {
+        "type": "minecraft:in_square"
+      },
+      {
+        "type": "minecraft:heightmap",
+        "heightmap": "OCEAN_FLOOR"
+      },
+      {
+        "type": "block_predicate_filter",
+        "predicate": {
+            "type": "matching_blocks",
+            "offset": [
+                0,
+                -1,
+                0
+            ],
+            "blocks": [
+                "grass_block",
+                "sand"
+            ]
+        }
+      }
+    ]
+  }

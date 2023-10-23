@@ -1,0 +1,46 @@
+{
+    "feature": "bte:trees/spruce_trees",
+    "placement": [
+        {
+            "type": "count",
+            "count": {
+                "type": "weighted_list",
+                "distribution": [
+                    {
+                        "weight": 70,
+                        "data": 5
+                    },
+                    {
+                        "weight": 15,
+                        "data": 0
+                    },
+                    {
+                        "weight": 15,
+                        "data": 1
+                    }
+                ]
+            }
+        },
+        {
+            "type": "in_square"
+        },
+        {
+            "type": "heightmap",
+            "heightmap": "WORLD_SURFACE"
+        },
+        {
+            "type": "block_predicate_filter",
+            "predicate": {
+                "type": "matching_blocks",
+                "offset": [
+                    0,
+                    -1,
+                    0
+                ],
+                "blocks": [
+                    "grass_block"
+                ]
+            }
+        }
+    ]
+}
