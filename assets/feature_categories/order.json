@@ -1,6 +1,6 @@
 {
-    "files":[
-        "forest_catgeorie.json",
-        "vegetation_categorie.json"
+    "file_paths":[
+        "assets/feature_categorie/forest_catgeorie.json",
+        "assets/feature_categorie/vegetation_categorie.json"
     ]
 }
