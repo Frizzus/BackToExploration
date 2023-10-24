@@ -54,7 +54,8 @@ for template in env_templates:
         logging.error("\nFound an unexpected directory : assets/env_template/" + template)
         raise lib.bte_errors.UnexpectedDirectoryError("\nFound an unexpected directory : assets/env_template/" + template)
     else:
-        logging.debug("assets/env_template/"+template)
+        logging.info("creating biomes for : assets/env_template/" + template)
+
 
 logging.info("datapack created")
 print("datapack created")
