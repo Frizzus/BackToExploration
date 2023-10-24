@@ -6,6 +6,12 @@ logging.basicConfig(filename="logs.txt", level=logging.FATAL)
 
 
 def template_key_checking(key:object, intance_of:type, template_name:str):
+    """
+    Help checking the validity of necessary json variable of a biome_env_template json file.
+
+    Return useful error message and log when the user will misstype something in env_template
+    """
+
     type_message = "MissTyped |" + str(key) + "| is not of type " + str(intance_of) + " in \"" + template_name + ".json\""
     key_message = "The json variable |" + str(key) + "| does not exist and should"
 
@@ -22,11 +28,17 @@ def template_key_checking(key:object, intance_of:type, template_name:str):
 
 
 def set_current_template(path:str):
+    """
+    set the current_template of the module to the file "path" point to
+
+    does a basic checking to see if a biome JSON file would work in a datapack if the current_template is used
+    """
+
     template_file = open("path")
     template_name = template_file.name
     current_template = json.load(template_file)
 
-    # checking if the object is from an env_template
+    # checking if the object is from a valid env_template
 
     template_key_checking(current_template["has_precipitation"], bool, template_name)
     template_key_checking(current_template["temperature"], float, template_name)
