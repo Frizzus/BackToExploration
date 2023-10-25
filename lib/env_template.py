@@ -1,7 +1,6 @@
 import json, logging
 
 current_template:dict = {}
-template_name:str
 logging.basicConfig(filename="logs.txt", level=logging.FATAL)
 
 
@@ -50,3 +49,15 @@ def set_current_template(path:str):
     template_key_checking(current_template["features"], list, template_name)
     template_key_checking(current_template["spawners"], dict, template_name)
     template_key_checking(current_template["spawn_costs"], dict, template_name)
+
+
+def create_biome(biome_path_list:list[str]):
+    # copy current template
+    # get order.json (make sure it exists)
+    # create a features object to store all the features
+    # for loop for every line in order list
+    # give the cat path and the allowed_downfall/temperature of the template and the to a featurelist method that fill the featurelist object
+    # get back the feature object and use the method to get the formated list
+    # push the list to the current template 
+    # create a json with a name to the bte/data/worldgen/biome/ dir and add the biome file path to biome_path_list
+    pass
