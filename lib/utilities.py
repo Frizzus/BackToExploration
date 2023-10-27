@@ -7,6 +7,8 @@ def weighted_choice(values:list, weights:list[int], over:int) -> any:
     for nb in weights:
         weights_sum += nb
         weights_ranges.append(weights_sum)
+        if nb < 0:
+            raise ValueError("Values in weights must be positives : "+str(nb))
 
     if weights_sum != over:
         raise ValueError("The values in |weights| do not add up to |over| : "+str(over))
