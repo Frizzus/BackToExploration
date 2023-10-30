@@ -21,6 +21,9 @@ def weighted_choice(values:list, weights:list[int], over:int) -> any:
     
 
 def sort_with_priority(tuples:list[tuple]) -> list[tuple]:
+    """
+    insertion sorting for sorting our tuple of feature path and priority
+    """
     res = tuples
 
     for i in range(len(res)):

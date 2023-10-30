@@ -21,7 +21,7 @@ class FeatureList:
 
         for index in range(len(cat_object["features"])):
             features_indexes.append(index)
-            odds.append(cat_object["features"]["odds_1000"])
+            odds.append(cat_object["features"][index]["odds_1000"])
         
         choosen:list = []
         for gen_turn in range(nb_iteration):
@@ -37,25 +37,25 @@ class FeatureList:
 
         match cat_object["generation_step"]:
                 case "RAW_GENERATION":
-                    self.RAW_GENERATION.append(res)
+                    self.RAW_GENERATION.extend(res)
                 case "FLUID_SPRINGS":
-                    self.FLUID_SPRINGS.append(res)
+                    self.FLUID_SPRINGS.extend(res)
                 case "LOCAL_MODIFICATIONS":
-                    self.LOCAL_MODIFICATIONS.append(res)
+                    self.LOCAL_MODIFICATIONS.extend(res)
                 case "LAKES":
-                    self.LAKES.append(res)
+                    self.LAKES.extend(res)
                 case "STRONGHOLDS":
-                    self.STRONGHOLDS.append(res)
+                    self.STRONGHOLDS.extend(res)
                 case "SURFACE_STRUCTURES":
-                    self.SURFACE_STRUCTURES.append(res)
+                    self.SURFACE_STRUCTURES.extend(res)
                 case "TOP_LAYER_MODIFICATION":
-                    self.TOP_LAYER_MODIFICATION.append(res)
+                    self.TOP_LAYER_MODIFICATION.extend(res)
                 case "UNDERGROUND_DECORATION":
-                    self.UNDERGROUND_DECORATION.append(res)
+                    self.UNDERGROUND_DECORATION.extend(res)
                 case "UNDERGROUND_ORES":
-                    self.UNDERGROUND_ORES.append(res)
+                    self.UNDERGROUND_ORES.extend(res)
                 case "VEGETAL_DECORATION":
-                    self.VEGETAL_DECORATION.append(res)
+                    self.VEGETAL_DECORATION.extend(res)
     
 
     def fill_with_categorie_file(self, cat_file_path:str, allowed_downfall:float, allowed_temperature:float):
