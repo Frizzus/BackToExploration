@@ -1,6 +1,6 @@
 {
     "cat_type": "basic",
-    "generation_steps": "VEGETAL_DECORATION",
+    "generation_step": "VEGETAL_DECORATION",
     "multiple_occurence_percentage": [95, 30, 10],
     "allowed_temperature_range":[-1.0, 2.0],
     "allowed_downfall_range":[-1.0, 2.0],

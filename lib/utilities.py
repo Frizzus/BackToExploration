@@ -19,3 +19,26 @@ def weighted_choice(values:list, weights:list[int], over:int) -> any:
         if random_value <= weights_ranges[index]:
             return values[index]
     
+
+def sort_with_priority(tuples:list[tuple]) -> list[tuple]:
+    res = tuples
+
+    for i in range(len(res)):
+        current_value = res[i]
+        position = i
+
+        while position>0 and res[position-1][1]>=current_value[1]:
+            if res[position-1][1]!=current_value[1]:
+                res[position]=res[position-1]
+                position = position-1
+            elif res[position-1][1]==current_value[1] and res[position-1][0]>current_value[0]:
+                res[position]=res[position-1]
+                position = position-1
+            else:
+                pass
+
+
+        res[position]=current_value
+
+    return res
+                

@@ -1,7 +1,7 @@
 {
 
     "cat_type": "density",
-    "generation_steps": "VEGETAL_DECORATION",
+    "generation_step": "VEGETAL_DECORATION",
     "multiple_occurence_percentage": [60, 20, 10, 5],
     "allowed_temperature_range":[-1.0, 2.0],
     "allowed_downfall_range":[-1.0, 2.0],
