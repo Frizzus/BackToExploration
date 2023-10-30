@@ -27,15 +27,9 @@ def sort_with_priority(tuples:list[tuple]) -> list[tuple]:
         current_value = res[i]
         position = i
 
-        while position>0 and res[position-1][1]>=current_value[1]:
-            if res[position-1][1]!=current_value[1]:
-                res[position]=res[position-1]
-                position = position-1
-            elif res[position-1][1]==current_value[1] and res[position-1][0]>current_value[0]:
-                res[position]=res[position-1]
-                position = position-1
-            else:
-                pass
+        while position>0 and (res[position-1][1]>current_value[1] or (res[position-1][1]==current_value[1] and res[position-1][0]>current_value[0])):
+            res[position]=res[position-1]
+            position = position-1
 
 
         res[position]=current_value
