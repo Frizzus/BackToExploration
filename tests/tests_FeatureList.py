@@ -53,3 +53,24 @@ class TestFeatureList(unittest.TestCase):
 
         obj.basic_cat_filler(4,cat_obj)
         self.assertTrue(len(obj.VEGETAL_DECORATION) == 4)
+
+    def test_construct_complete_feature_list(self):
+        feature_obj = FeatureList()
+        feature_obj.RAW_GENERATION.extend(["raw_gen_feature_1","raw_gen_feature_2", "raw_gen_feature_3"])
+        feature_obj.VEGETAL_DECORATION.extend(["tree_1", "tree_2", "tree_3", "tree_4"])
+
+        model_list = [
+            ["raw_gen_feature_1","raw_gen_feature_2", "raw_gen_feature_3"],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            ["tree_1", "tree_2", "tree_3", "tree_4"],
+            []
+        ]
+
+        self.assertListEqual(model_list, feature_obj.construct_complete_feature_list())

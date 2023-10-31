@@ -2,20 +2,24 @@ import json, random, lib.utilities as utils
 
 class FeatureList:
     def __init__(self) -> None:
-        self.RAW_GENERATION = []
-        self.LAKES = []
-        self.LOCAL_MODIFICATIONS = []
-        self.UNDERGROUND_STRUCTURES = []
-        self.SURFACE_STRUCTURES = []
-        self.STRONGHOLDS = []
-        self.UNDERGROUND_ORES = []
-        self.UNDERGROUND_DECORATION = []
-        self.FLUID_SPRINGS = []
-        self.VEGETAL_DECORATION = []
-        self.TOP_LAYER_MODIFICATION = []
+        self.RAW_GENERATION:list[str] = []
+        self.LAKES:list[str] = []
+        self.LOCAL_MODIFICATIONS:list[str] = []
+        self.UNDERGROUND_STRUCTURES:list[str] = []
+        self.SURFACE_STRUCTURES:list[str] = []
+        self.STRONGHOLDS:list[str] = []
+        self.UNDERGROUND_ORES:list[str] = []
+        self.UNDERGROUND_DECORATION:list[str] = []
+        self.FLUID_SPRINGS:list[str] = []
+        self.VEGETAL_DECORATION:list[str] = []
+        self.TOP_LAYER_MODIFICATION:list[str] = []
 
 
     def basic_cat_filler(self, nb_iteration:int, cat_object:dict):
+        """
+        take a categorie json object and a number of iteration to randomly choose a feature in the categorie
+        it will fill the FeatureList object with the randomly chosen feature
+        """
         features_indexes:list[int] = []
         odds:list[int] = []
 
@@ -72,7 +76,20 @@ class FeatureList:
             
                 
 
-    def construct_comlete_feature_list(self):
-        pass
-
-# gotta take care of the feature overall order and the priority arg in categorie files
+    def construct_complete_feature_list(self) -> list[list[str]]:
+        """
+        Return the features array to use in a json biome
+        """
+        res = []
+        res.append(self.RAW_GENERATION)
+        res.append(self.LAKES)
+        res.append(self.LOCAL_MODIFICATIONS)
+        res.append(self.UNDERGROUND_STRUCTURES)
+        res.append(self.SURFACE_STRUCTURES)
+        res.append(self.STRONGHOLDS)
+        res.append(self.UNDERGROUND_ORES)
+        res.append(self.UNDERGROUND_DECORATION)
+        res.append(self.FLUID_SPRINGS)
+        res.append(self.VEGETAL_DECORATION)
+        res.append(self.TOP_LAYER_MODIFICATION)
+        return res
