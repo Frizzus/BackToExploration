@@ -74,3 +74,235 @@ class TestFeatureList(unittest.TestCase):
         ]
 
         self.assertListEqual(model_list, feature_obj.construct_complete_feature_list())
+
+    def test_density_filler_priority(self):
+        obj:FeatureList = FeatureList()
+        cat_obj = {
+            "cat_type": "density",
+            "generation_step": "VEGETAL_DECORATION",
+            "multiple_occurence_percentage": [60, 20, 10, 5],
+            "allowed_temperature_range":[-1.0, 2.0],
+            "allowed_downfall_range":[-1.0, 2.0],
+            "features":[
+                {
+                    "odds_1000": 100,
+                    "content":[
+                        {"feature":"bte/tree_density/oak_forest", "odds":50, "priority":3},
+                        {"feature":"bte/tree_density/sparse_oak_forest", "odds":15, "priority":2},
+                        {"feature":"bte/tree_density/scarce_oak_forest", "odds":10, "priority":1},
+                        {"feature":"bte/tree_density/thick_oak_forest", "odds":15, "priority":4},
+                        {"feature":"bte/tree_density/opaque_oak_forest", "odds":10, "priority":5}
+                    ]
+                },
+                {
+                    "odds_1000":100,
+                    "content":[
+                        {"feature":"bte/tree_density/sea_buckthorn_forest", "odds":50, "priority":3},
+                        {"feature":"bte/tree_density/sparse_sea_buckthorn_forest", "odds":15, "priority":2},
+                        {"feature":"bte/tree_density/scarce_sea_buckthorn_forest", "odds":10, "priority":1},
+                        {"feature":"bte/tree_density/thick_sea_buckthorn_forest", "odds":15, "priority":4},
+                        {"feature":"bte/tree_density/opaque_sea_buckthorn_forest", "odds":10, "priority":5}
+                    ]
+                },
+                {
+                    "odds_1000": 100,
+                    "content":[
+                        {"feature":"bte/tree_density/spruce_forest", "odds":50, "priority":3},
+                        {"feature":"bte/tree_density/sparse_spruce_forest", "odds":15, "priority":2},
+                        {"feature":"bte/tree_density/scarce_spruce_forest", "odds":10, "priority":1},
+                        {"feature":"bte/tree_density/thick_spruce_forest", "odds":15, "priority":4},
+                        {"feature":"bte/tree_density/opaque_spruce_forest", "odds":10, "priority":5}
+                    ]
+                },
+                {
+                    "odds_1000":100,
+                    "content":[
+                        {"feature":"bte/tree_density/mangrove_forest", "odds":50, "priority":3},
+                        {"feature":"bte/tree_density/sparse_mangrove_forest", "odds":15, "priority":2},
+                        {"feature":"bte/tree_density/scarce_mangrove_forest", "odds":10, "priority":1},
+                        {"feature":"bte/tree_density/thick_mangrove_forest", "odds":15, "priority":4},
+                        {"feature":"bte/tree_density/opaque_mangrove_forest", "odds":10, "priority":5}
+                    ]
+                },
+                {
+                    "odds_1000":100,
+                    "content":[
+                        {"feature":"bte/tree_density/jungle_forest", "odds":50, "priority":3},
+                        {"feature":"bte/tree_density/sparse_jungle_forest", "odds":15, "priority":2},
+                        {"feature":"bte/tree_density/scarce_jungle_forest", "odds":10, "priority":1},
+                        {"feature":"bte/tree_density/thick_jungle_forest", "odds":15, "priority":4},
+                        {"feature":"bte/tree_density/opaque_jungle_forest", "odds":10, "priority":5}
+                    ]
+                },
+                {
+                    "odds_1000":100,
+                    "content":[
+                        {"feature":"bte/tree_density/grove_forest", "odds":50, "priority":3},
+                        {"feature":"bte/tree_density/sparse_grove_forest", "odds":15, "priority":2},
+                        {"feature":"bte/tree_density/scarce_grove_forest", "odds":10, "priority":1},
+                        {"feature":"bte/tree_density/thick_grove_forest", "odds":15, "priority":4},
+                        {"feature":"bte/tree_density/opaque_grove_forest", "odds":10, "priority":5}
+                    ]
+                },
+                {
+                    "odds_1000":100,
+                    "content":[
+                        {"feature":"bte/tree_density/dark_forest", "odds":50, "priority":3},
+                        {"feature":"bte/tree_density/sparse_dark_forest", "odds":15, "priority":2},
+                        {"feature":"bte/tree_density/scarce_dark_forest", "odds":10, "priority":1},
+                        {"feature":"bte/tree_density/thick_dark_forest", "odds":15, "priority":4},
+                        {"feature":"bte/tree_density/opaque_dark_forest", "odds":10, "priority":5}
+                    ]
+                },
+                {
+                    "odds_1000":100,
+                    "content":[
+                        {"feature":"bte/tree_density/cherry_forest", "odds":50, "priority":3},
+                        {"feature":"bte/tree_density/sparse_cherry_forest", "odds":15, "priority":2},
+                        {"feature":"bte/tree_density/scarce_cherry_forest", "odds":10, "priority":1},
+                        {"feature":"bte/tree_density/thick_cherry_forest", "odds":15, "priority":4},
+                        {"feature":"bte/tree_density/opaque_cherry_forest", "odds":10, "priority":5}
+                    ]
+                },
+                {
+                    "odds_1000":100,
+                    "content":[
+                        {"feature":"bte/tree_density/birch_forest", "odds":50, "priority":3},
+                        {"feature":"bte/tree_density/sparse_birch_forest", "odds":15, "priority":2},
+                        {"feature":"bte/tree_density/scarce_birch_forest", "odds":10, "priority":1},
+                        {"feature":"bte/tree_density/thick_birch_forest", "odds":15, "priority":4},
+                        {"feature":"bte/tree_density/opaque_birch_forest", "odds":10, "priority":5}
+                    ]
+                },
+                {
+                    "odds_1000":100,
+                    "content":[
+                        {"feature":"bte/tree_density/acacia_forest", "odds":50, "priority":3},
+                        {"feature":"bte/tree_density/sparse_acacia_forest", "odds":15, "priority":2},
+                        {"feature":"bte/tree_density/scarce_acacia_forest", "odds":10, "priority":1},
+                        {"feature":"bte/tr0e_density/thick_acacia_forest", "odds":15, "priority":4},
+                        {"feature":"bte/tree_density/opaque_acacia_forest", "odds":10, "priority":5}
+                    ]
+                }
+                
+            ]
+        }
+
+        obj.density_cat_filler(2,cat_obj)
+        self.assertTrue(len(obj.VEGETAL_DECORATION) == 2)
+
+    def test_density_filler_no_priority(self):
+        obj:FeatureList = FeatureList()
+        cat_obj = {
+            "cat_type": "density",
+            "generation_step": "VEGETAL_DECORATION",
+            "multiple_occurence_percentage": [60, 20, 10, 5],
+            "allowed_temperature_range":[-1.0, 2.0],
+            "allowed_downfall_range":[-1.0, 2.0],
+            "features":[
+                {
+                    "odds_1000": 100,
+                    "content":[
+                        {"feature":"bte/tree_density/oak_forest", "odds":50},
+                        {"feature":"bte/tree_density/sparse_oak_forest", "odds":15},
+                        {"feature":"bte/tree_density/scarce_oak_forest", "odds":10},
+                        {"feature":"bte/tree_density/thick_oak_forest", "odds":15},
+                        {"feature":"bte/tree_density/opaque_oak_forest", "odds":10}
+                    ]
+                },
+                {
+                    "odds_1000":100,
+                    "content":[
+                        {"feature":"bte/tree_density/sea_buckthorn_forest", "odds":50},
+                        {"feature":"bte/tree_density/sparse_sea_buckthorn_forest", "odds":15},
+                        {"feature":"bte/tree_density/scarce_sea_buckthorn_forest", "odds":10},
+                        {"feature":"bte/tree_density/thick_sea_buckthorn_forest", "odds":15},
+                        {"feature":"bte/tree_density/opaque_sea_buckthorn_forest", "odds":10}
+                    ]
+                },
+                {
+                    "odds_1000": 100,
+                    "content":[
+                        {"feature":"bte/tree_density/spruce_forest", "odds":50},
+                        {"feature":"bte/tree_density/sparse_spruce_forest", "odds":15},
+                        {"feature":"bte/tree_density/scarce_spruce_forest", "odds":10},
+                        {"feature":"bte/tree_density/thick_spruce_forest", "odds":15},
+                        {"feature":"bte/tree_density/opaque_spruce_forest", "odds":10}
+                    ]
+                },
+                {
+                    "odds_1000":100,
+                    "content":[
+                        {"feature":"bte/tree_density/mangrove_forest", "odds":50},
+                        {"feature":"bte/tree_density/sparse_mangrove_forest", "odds":15},
+                        {"feature":"bte/tree_density/scarce_mangrove_forest", "odds":10},
+                        {"feature":"bte/tree_density/thick_mangrove_forest", "odds":15},
+                        {"feature":"bte/tree_density/opaque_mangrove_forest", "odds":10}
+                    ]
+                },
+                {
+                    "odds_1000":100,
+                    "content":[
+                        {"feature":"bte/tree_density/jungle_forest", "odds":50},
+                        {"feature":"bte/tree_density/sparse_jungle_forest", "odds":15},
+                        {"feature":"bte/tree_density/scarce_jungle_forest", "odds":10},
+                        {"feature":"bte/tree_density/thick_jungle_forest", "odds":15},
+                        {"feature":"bte/tree_density/opaque_jungle_forest", "odds":10}
+                    ]
+                },
+                {
+                    "odds_1000":100,
+                    "content":[
+                        {"feature":"bte/tree_density/grove_forest", "odds":50},
+                        {"feature":"bte/tree_density/sparse_grove_forest", "odds":15},
+                        {"feature":"bte/tree_density/scarce_grove_forest", "odds":10},
+                        {"feature":"bte/tree_density/thick_grove_forest", "odds":15},
+                        {"feature":"bte/tree_density/opaque_grove_forest", "odds":10}
+                    ]
+                },
+                {
+                    "odds_1000":100,
+                    "content":[
+                        {"feature":"bte/tree_density/dark_forest", "odds":50},
+                        {"feature":"bte/tree_density/sparse_dark_forest", "odds":15},
+                        {"feature":"bte/tree_density/scarce_dark_forest", "odds":10},
+                        {"feature":"bte/tree_density/thick_dark_forest", "odds":15},
+                        {"feature":"bte/tree_density/opaque_dark_forest", "odds":10}
+                    ]
+                },
+                {
+                    "odds_1000":100,
+                    "content":[
+                        {"feature":"bte/tree_density/cherry_forest", "odds":50},
+                        {"feature":"bte/tree_density/sparse_cherry_forest", "odds":15},
+                        {"feature":"bte/tree_density/scarce_cherry_forest", "odds":10},
+                        {"feature":"bte/tree_density/thick_cherry_forest", "odds":15},
+                        {"feature":"bte/tree_density/opaque_cherry_forest", "odds":10}
+                    ]
+                },
+                {
+                    "odds_1000":100,
+                    "content":[
+                        {"feature":"bte/tree_density/birch_forest", "odds":50},
+                        {"feature":"bte/tree_density/sparse_birch_forest", "odds":15},
+                        {"feature":"bte/tree_density/scarce_birch_forest", "odds":10},
+                        {"feature":"bte/tree_density/thick_birch_forest", "odds":15},
+                        {"feature":"bte/tree_density/opaque_birch_forest", "odds":10}
+                    ]
+                },
+                {
+                    "odds_1000":100,
+                    "content":[
+                        {"feature":"bte/tree_density/acacia_forest", "odds":50},
+                        {"feature":"bte/tree_density/sparse_acacia_forest", "odds":15},
+                        {"feature":"bte/tree_density/scarce_acacia_forest", "odds":10},
+                        {"feature":"bte/tree_density/thick_acacia_forest", "odds":15},
+                        {"feature":"bte/tree_density/opaque_acacia_forest", "odds":10}
+                    ]
+                }
+                
+            ]
+        }
+
+        obj.density_cat_filler(4,cat_obj)
+        self.assertTrue(len(obj.VEGETAL_DECORATION) == 4)

@@ -14,6 +14,57 @@ class FeatureList:
         self.VEGETAL_DECORATION:list[str] = []
         self.TOP_LAYER_MODIFICATION:list[str] = []
 
+    def density_cat_filler(self, nb_iteration:int, cat_object:dict):
+        density_content:list[list] = []
+        odds_1000:list[int] = []
+        for feature in cat_object["features"]:
+            density_content.append(feature["content"])
+            odds_1000.append(feature["odds_1000"])
+
+        choosen_features:list[dict] = []
+        for gen_turn in range(nb_iteration):
+            choosen_features.append(utils.weighted_choice(density_content, odds_1000, 1000))
+
+        content_indexes:list[int] = []
+        content_odds:list[int] = []
+        for index in range(len(choosen_features)):
+            content_indexes.append(index)
+            content_odds.append(choosen_features[index]["odds"])
+
+        choosen_features_str_indexes:list = []
+        for gen_turn in range(nb_iteration):
+            choosen_features_str_indexes.append(utils.weighted_choice(content_indexes, content_odds, 100))
+
+        res:list[tuple] = []
+        for index in choosen_features_str_indexes:
+            if not ("priority" in choosen_features[index]):
+                choosen_features[index]["priority"] = 10_000
+            res.append((choosen_features[index]["feature"], choosen_features[index]["priority"]))
+
+        res = utils.sort_with_priority(res)
+
+        match cat_object["generation_step"]:
+                case "RAW_GENERATION":
+                    self.RAW_GENERATION.extend(res)
+                case "FLUID_SPRINGS":
+                    self.FLUID_SPRINGS.extend(res)
+                case "LOCAL_MODIFICATIONS":
+                    self.LOCAL_MODIFICATIONS.extend(res)
+                case "LAKES":
+                    self.LAKES.extend(res)
+                case "STRONGHOLDS":
+                    self.STRONGHOLDS.extend(res)
+                case "SURFACE_STRUCTURES":
+                    self.SURFACE_STRUCTURES.extend(res)
+                case "TOP_LAYER_MODIFICATION":
+                    self.TOP_LAYER_MODIFICATION.extend(res)
+                case "UNDERGROUND_DECORATION":
+                    self.UNDERGROUND_DECORATION.extend(res)
+                case "UNDERGROUND_ORES":
+                    self.UNDERGROUND_ORES.extend(res)
+                case "VEGETAL_DECORATION":
+                    self.VEGETAL_DECORATION.extend(res)
+        
 
     def basic_cat_filler(self, nb_iteration:int, cat_object:dict):
         """

@@ -7,7 +7,7 @@
     "allowed_downfall_range":[-1.0, 2.0],
     "features":[
         {
-            "odds_1000": 120,
+            "odds_1000": 100,
             "content":[
                 {"feature":"bte/tree_density/oak_forest", "odds":50, "priority":3},
                 {"feature":"bte/tree_density/sparse_oak_forest", "odds":15, "priority":2},
@@ -17,7 +17,7 @@
             ]
         },
         {
-            "odds_1000":110,
+            "odds_1000":100,
             "content":[
                 {"feature":"bte/tree_density/sea_buckthorn_forest", "odds":50, "priority":3},
                 {"feature":"bte/tree_density/sparse_sea_buckthorn_forest", "odds":15, "priority":2},
@@ -27,7 +27,7 @@
             ]
         },
         {
-            "odds_1000": 110,
+            "odds_1000": 100,
             "content":[
                 {"feature":"bte/tree_density/spruce_forest", "odds":50, "priority":3},
                 {"feature":"bte/tree_density/sparse_spruce_forest", "odds":15, "priority":2},
@@ -37,7 +37,7 @@
             ]
         },
         {
-            "odds_1000":110,
+            "odds_1000":100,
             "content":[
                 {"feature":"bte/tree_density/mangrove_forest", "odds":50, "priority":3},
                 {"feature":"bte/tree_density/sparse_mangrove_forest", "odds":15, "priority":2},
@@ -47,7 +47,7 @@
             ]
         },
         {
-            "odds_1000":110,
+            "odds_1000":100,
             "content":[
                 {"feature":"bte/tree_density/jungle_forest", "odds":50, "priority":3},
                 {"feature":"bte/tree_density/sparse_jungle_forest", "odds":15, "priority":2},
@@ -57,7 +57,7 @@
             ]
         },
         {
-            "odds_1000":110,
+            "odds_1000":100,
             "content":[
                 {"feature":"bte/tree_density/grove_forest", "odds":50, "priority":3},
                 {"feature":"bte/tree_density/sparse_grove_forest", "odds":15, "priority":2},
@@ -67,7 +67,7 @@
             ]
         },
         {
-            "odds_1000":110,
+            "odds_1000":100,
             "content":[
                 {"feature":"bte/tree_density/dark_forest", "odds":50, "priority":3},
                 {"feature":"bte/tree_density/sparse_dark_forest", "odds":15, "priority":2},
@@ -77,7 +77,7 @@
             ]
         },
         {
-            "odds_1000":110,
+            "odds_1000":100,
             "content":[
                 {"feature":"bte/tree_density/cherry_forest", "odds":50, "priority":3},
                 {"feature":"bte/tree_density/sparse_cherry_forest", "odds":15, "priority":2},
@@ -87,7 +87,7 @@
             ]
         },
         {
-            "odds_1000":110,
+            "odds_1000":100,
             "content":[
                 {"feature":"bte/tree_density/birch_forest", "odds":50, "priority":3},
                 {"feature":"bte/tree_density/sparse_birch_forest", "odds":15, "priority":2},
@@ -97,7 +97,7 @@
             ]
         },
         {
-            "odds_1000":110,
+            "odds_1000":100,
             "content":[
                 {"feature":"bte/tree_density/acacia_forest", "odds":50, "priority":3},
                 {"feature":"bte/tree_density/sparse_acacia_forest", "odds":15, "priority":2},
