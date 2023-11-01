@@ -1,5 +1,5 @@
 {
-    "cat_type": "basic",
+    "cat_type": "alien",
     "generation_step": "VEGETAL_DECORATION",
     "multiple_occurence_percentage": [95, 30, 10],
     "allowed_temperature_range":[-1.0, 2.0],
@@ -14,7 +14,7 @@
         {"feature":"minecraft:patch_large_fern", "odds_1000":100},
         {"feature":"minecraft:patch_berry_common", "odds_1000":100},
         {"feature":"minecraft:patch_berry_rare", "odds_1000":100},
-        {"feature":"minecraft:patch_melon", "odds_1000":50},
-        {"feature":"minecraft:patch_pumpkin", "odds_1000":50}
+        {"feature":"minecraft:patch_melon", "odds_1000":100},
+        {"feature":"minecraft:patch_pumpkin", "odds_1000":100}
     ]
 }

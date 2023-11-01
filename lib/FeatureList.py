@@ -1,4 +1,4 @@
-import json, random, lib.utilities as utils
+import json, random, lib.utilities as utils, logging
 
 class FeatureList:
     def __init__(self) -> None:
@@ -126,16 +126,29 @@ class FeatureList:
                     self.VEGETAL_DECORATION.extend(res)
     
 
-    def fill_with_categorie_file(self, cat_file_path:str, allowed_downfall:float, allowed_temperature:float):
-        cat_object = json.load(open(cat_file_path))
+    def fill_with_categorie_file(self, cat_file_path:str, env_downfall:float, env_temperature:float):
+        cat_file = open(cat_file_path)
+        cat_object = json.load(cat_file)
+        cat_file.close()
 
-        if (cat_object["allowed_temperature_range"][1] >= allowed_temperature and allowed_temperature >= cat_object["allowed_temperature_range"][0]) and (cat_object["allowed_downfall_range"][1] >= allowed_downfall and allowed_downfall >= cat_object["allowed_downfall_range"][0]):
+        if (cat_object["allowed_temperature_range"][1] >= env_temperature and env_temperature >= cat_object["allowed_temperature_range"][0]) and (cat_object["allowed_downfall_range"][1] >= env_downfall and env_downfall >= cat_object["allowed_downfall_range"][0]):
             nb_cat_iteration:int = 0
             random_nb = random.randint(1, 100)
 
             for percentage in cat_object["multiple_occurence_percentage"]:
                 if random_nb <= percentage:
                     nb_cat_iteration += 1
+            
+            match cat_object["cat_type"]:
+                case "density":
+                    self.density_cat_filler(nb_cat_iteration, cat_object)
+                case "basic":
+                    self.basic_cat_filler(nb_cat_iteration, cat_object)
+                case _:
+                    raise KeyError("The cat_type |", cat_object["cat_type","| does not exists"])
+        else:
+            logging.info("current feature categorie |",cat_file_path,"| does not support the environnement downfall or temperature.")
+
             
             
                 

@@ -26,7 +26,6 @@ class TestFeatureList(unittest.TestCase):
         }
 
         obj.basic_cat_filler(2,cat_obj)
-        print(obj.construct_complete_feature_list())
         self.assertTrue(len(obj.VEGETAL_DECORATION) == 2)
         self.assertTrue(utils.str_only_checking(obj.VEGETAL_DECORATION))
 
@@ -54,7 +53,6 @@ class TestFeatureList(unittest.TestCase):
         }
 
         obj.basic_cat_filler(4,cat_obj)
-        print(obj.construct_complete_feature_list())
         self.assertTrue(len(obj.VEGETAL_DECORATION) == 4)
         self.assertTrue(utils.str_only_checking(obj.VEGETAL_DECORATION))
 
@@ -193,7 +191,6 @@ class TestFeatureList(unittest.TestCase):
         }
 
         obj.density_cat_filler(2,cat_obj)
-        print(obj.construct_complete_feature_list())
         self.assertTrue(len(obj.VEGETAL_DECORATION) == 2)
         self.assertTrue(utils.str_only_checking(obj.VEGETAL_DECORATION))
 
@@ -311,7 +308,30 @@ class TestFeatureList(unittest.TestCase):
         }
 
         obj.density_cat_filler(4,cat_obj)
-        print(obj.construct_complete_feature_list())
-        print("type of VEGETAL_DECORATION : ", type(obj.VEGETAL_DECORATION))
         self.assertTrue(len(obj.VEGETAL_DECORATION) == 4)
         self.assertTrue(utils.str_only_checking(obj.VEGETAL_DECORATION))
+
+
+    def test_fill_with_valid_categorie(self):
+        obj = FeatureList()
+        try:
+            obj.fill_with_categorie_file("tests/json_files/forest_categorie.json", 1.0, 1.0)
+            obj.fill_with_categorie_file("tests/json_files/vegetation_categorie.json", 1.0, 1.0)
+            self.assertTrue(True)
+        except:
+            self.assertTrue(False)
+
+    def test_fill_with_invalid_categorie(self):
+        obj = FeatureList()
+        with self.assertRaises(KeyError): obj.fill_with_categorie_file("tests/json_files/wrong_vegetation_categorie.json", 1.0, 1.0)
+
+    def test_fill_with_incompatible_temperature(self):
+        obj = FeatureList()
+        obj.fill_with_categorie_file("tests/json_files/forest_categorie.json", 1.0, 100.0)
+        self.assertEqual(obj.VEGETAL_DECORATION, FeatureList().VEGETAL_DECORATION)
+
+    def test_fill_with_incompatible_downfall(self):
+        obj = FeatureList()
+        obj.fill_with_categorie_file("tests/json_files/forest_categorie.json", 100.0, 1.0)
+        self.assertEqual(obj.VEGETAL_DECORATION, FeatureList().VEGETAL_DECORATION)
+
