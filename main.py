@@ -1,4 +1,5 @@
 import os, shutil, json, lib.bte_errors, logging
+from lib.EnvTemplate import EnvTemplate
 
 try:
     logs = os.remove("logs.txt")
@@ -48,15 +49,20 @@ shutil.copy("assets/overworld.json", "bte/minecraft/dimension/overworld.json")
 
 # biome creation time
 env_templates = os.listdir("assets/env_template")
+biome_mcpaths:list[str] = []
 
 for template in env_templates:
     if os.path.isdir("assets/env_template/"+template):
         logging.error("\nFound an unexpected directory : assets/env_template/" + template)
         raise lib.bte_errors.UnexpectedDirectoryError("\nFound an unexpected directory : assets/env_template/" + template)
 
+tmp = EnvTemplate()
+
 for template in env_templates:
     logging.info("creating biomes for : assets/env_template/" + template)
-        
+    tmp.set_current_template("assets/env_template/"+template)
+    biome_mcpaths.append(tmp.create_biome())
+    
 
 
 logging.info("datapack created")
