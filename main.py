@@ -17,7 +17,7 @@ except:
 
 # création du template du datapack
 
-datapack_templating:list[str] = ["bte", "bte/data", "bte/minecraft", "bte/minecraft/dimension", "bte/data/worldgen", "bte/data/worldgen/biome", "bte/data/worldgen/configured_feature", "bte/data/worldgen/placed_feature"]
+datapack_templating:list[str] = ["bte", "bte/data", "bte/data/minecraft", "bte/data/minecraft/dimension", "bte/data/bte", "bte/data/bte/worldgen", "bte/data/bte/worldgen/biome", "bte/data/bte/worldgen/configured_feature", "bte/data/bte/worldgen/placed_feature"]
 
 for directory in datapack_templating:
     os.mkdir(directory)
@@ -37,15 +37,13 @@ mc_meta.close()
 logging.info("basic template loaded")
 print("basic template loaded")
 
-shutil.copytree("assets/configured_feature", "bte/data/worldgen/configured_feature", dirs_exist_ok=True)
+shutil.copytree("assets/configured_feature", "bte/data/bte/worldgen/configured_feature", dirs_exist_ok=True)
 logging.info("configured features loaded")
 print("configured features loaded")
 
-shutil.copytree("assets/placed_feature", "bte/data/worldgen/placed_feature", dirs_exist_ok=True)
+shutil.copytree("assets/placed_feature", "bte/data/bte/worldgen/placed_feature", dirs_exist_ok=True)
 logging.info("placed features loaded")
 print("placed features loaded")
-
-shutil.copy("assets/overworld.json", "bte/minecraft/dimension/overworld.json")
 
 # biome creation time
 env_templates = os.listdir("assets/env_template")
@@ -61,9 +59,18 @@ tmp = EnvTemplate()
 for template in env_templates:
     logging.info("creating biomes for : assets/env_template/" + template)
     tmp.set_current_template("assets/env_template/"+template)
-    biome_mcpaths.append(tmp.create_biome())
+    for i in range(10):
+        biome_mcpaths.append(tmp.create_biome())
     
+overworld_file = open("assets/overworld.json")
+overworld_obj = json.load(overworld_file)
+overworld_file.close()
 
+overworld_obj["generator"]["biome_source"]["biomes"] = biome_mcpaths
+
+bte_overworld_file = open("bte/data/minecraft/dimension/overworld.json", "x")
+json.dump(overworld_obj, bte_overworld_file)
+bte_overworld_file.close
 
 logging.info("datapack created")
 print("datapack created")

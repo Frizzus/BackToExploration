@@ -1,5 +1,6 @@
 {
-    "type":"minecraft:overworld","generator":{
+    "type":"minecraft:overworld",
+    "generator":{
         "type":"minecraft:noise",
         "settings":"minecraft:overworld",
         "biome_source":

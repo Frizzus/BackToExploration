@@ -33,14 +33,13 @@ class EnvTemplate:
         template_key_checking(self.current_template["spawners"], dict, template_name)
         template_key_checking(self.current_template["spawn_costs"], dict, template_name)
 
-    def create_biome(self, biome_folder = "bte/data/worldgen/biome/") -> str:
+    def create_biome(self, biome_folder = "bte/data/bte/worldgen/biome/") -> str:
         """
         create the biome json file in the datapack
 
         Return the mcjson path to the biome created
         """
         self.biome_counter += 1
-        print(self.biome_counter)
 
         cat_order_file = open("assets/feature_categories/order.json", "r")
         order_obj = json.load(cat_order_file)
