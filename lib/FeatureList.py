@@ -21,27 +21,36 @@ class FeatureList:
             density_content.append(feature["content"])
             odds_1000.append(feature["odds_1000"])
 
-        choosen_features:list[dict] = []
+        choosen_contents:list[dict] = []
         for gen_turn in range(nb_iteration):
-            choosen_features.append(utils.weighted_choice(density_content, odds_1000, 1000))
+            choosen_contents.append(utils.weighted_choice(density_content, odds_1000, 1000))
 
-        content_indexes:list[int] = []
-        content_odds:list[int] = []
-        for index in range(len(choosen_features)):
-            content_indexes.append(index)
-            content_odds.append(choosen_features[index]["odds"])
+        contents_indexes:list[list[int]] = []
+        contents_odds:list[list[int]] = []
+        for content in choosen_contents:
+            current_indexes = []
+            current_odds = []
+            for index in range(len(content)):
+                current_indexes.append(index)
+                current_odds.append(content[index]["odds"])
+            contents_indexes.append(current_indexes)
+            contents_odds.append(current_odds)
 
         choosen_features_str_indexes:list = []
-        for gen_turn in range(nb_iteration):
-            choosen_features_str_indexes.append(utils.weighted_choice(content_indexes, content_odds, 100))
+        for i in range(len(contents_indexes)):
+            choosen_features_str_indexes.append(utils.weighted_choice(contents_indexes[i], contents_odds[i], 100))
 
-        res:list[tuple] = []
-        for index in choosen_features_str_indexes:
-            if not ("priority" in choosen_features[index]):
-                choosen_features[index]["priority"] = 10_000
-            res.append((choosen_features[index]["feature"], choosen_features[index]["priority"]))
+        tuples_res:list[tuple] = []
+        for index in range(len(choosen_features_str_indexes)):
+            if not ("priority" in choosen_contents[index][choosen_features_str_indexes[index]]):
+                choosen_contents[index][choosen_features_str_indexes[index]]["priority"] = 10_000
+            tuples_res.append((choosen_contents[index][choosen_features_str_indexes[index]]["feature"], choosen_contents[index][choosen_features_str_indexes[index]]["priority"]))
 
-        res = utils.sort_with_priority(res)
+        tuples_res = utils.sort_with_priority(tuples_res)
+
+        res:list[str] = []
+        for tupl in tuples_res:
+            res.append(tupl[0])
 
         match cat_object["generation_step"]:
                 case "RAW_GENERATION":
@@ -82,13 +91,17 @@ class FeatureList:
         for gen_turn in range(nb_iteration):
             choosen.append(utils.weighted_choice(features_indexes, odds, 1000))
 
-        res:list[tuple] = []
+        tuples_res:list[tuple] = []
         for index in choosen:
             if not ("priority" in cat_object["features"][index]):
                 cat_object["features"][index]["priority"] = 10_000
-            res.append((cat_object["features"][index]["feature"], cat_object["features"][index]["priority"]))
+            tuples_res.append((cat_object["features"][index]["feature"], cat_object["features"][index]["priority"]))
 
-        res = utils.sort_with_priority(res)
+        tuples_res = utils.sort_with_priority(tuples_res)
+
+        res:list[str] = []
+        for tupl in tuples_res:
+            res.append(tupl[0])
 
         match cat_object["generation_step"]:
                 case "RAW_GENERATION":

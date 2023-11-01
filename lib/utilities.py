@@ -39,3 +39,14 @@ def sort_with_priority(tuples:list[tuple]) -> list[tuple]:
 
     return res
                 
+def str_only_checking(ls:list) -> bool:
+    not_allowed_types:list[type] = [int, float, tuple, dict, bool]
+    ls_types = []
+
+    for item in ls:
+        ls_types.append(type(item))
+
+    for item in not_allowed_types:
+        if item in ls_types:
+            return False
+    return True

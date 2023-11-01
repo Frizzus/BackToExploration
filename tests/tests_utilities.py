@@ -78,3 +78,13 @@ class TestUtilities(unittest.TestCase):
             ("lorem", 10_000),
         ]
         self.assertListEqual(sorted_list, utils.sort_with_priority(test_list))
+
+    def test_str_only_checking_true(self):
+        test_types = ["", "", "", ""]
+
+        self.assertTrue(utils.str_only_checking(test_types))
+
+    def test_str_only_checking_false(self):
+        test_types = [True, 4.7, "", 3]
+
+        self.assertFalse(utils.str_only_checking(test_types))

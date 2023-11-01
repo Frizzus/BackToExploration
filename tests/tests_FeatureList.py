@@ -1,4 +1,4 @@
-import unittest
+import unittest, lib.utilities as utils
 from lib.FeatureList import FeatureList
 
 class TestFeatureList(unittest.TestCase):
@@ -26,7 +26,9 @@ class TestFeatureList(unittest.TestCase):
         }
 
         obj.basic_cat_filler(2,cat_obj)
+        print(obj.construct_complete_feature_list())
         self.assertTrue(len(obj.VEGETAL_DECORATION) == 2)
+        self.assertTrue(utils.str_only_checking(obj.VEGETAL_DECORATION))
 
     def test_basic_filler_priority(self):
         obj:FeatureList = FeatureList()
@@ -52,7 +54,9 @@ class TestFeatureList(unittest.TestCase):
         }
 
         obj.basic_cat_filler(4,cat_obj)
+        print(obj.construct_complete_feature_list())
         self.assertTrue(len(obj.VEGETAL_DECORATION) == 4)
+        self.assertTrue(utils.str_only_checking(obj.VEGETAL_DECORATION))
 
     def test_construct_complete_feature_list(self):
         feature_obj = FeatureList()
@@ -189,7 +193,9 @@ class TestFeatureList(unittest.TestCase):
         }
 
         obj.density_cat_filler(2,cat_obj)
+        print(obj.construct_complete_feature_list())
         self.assertTrue(len(obj.VEGETAL_DECORATION) == 2)
+        self.assertTrue(utils.str_only_checking(obj.VEGETAL_DECORATION))
 
     def test_density_filler_no_priority(self):
         obj:FeatureList = FeatureList()
@@ -305,4 +311,7 @@ class TestFeatureList(unittest.TestCase):
         }
 
         obj.density_cat_filler(4,cat_obj)
+        print(obj.construct_complete_feature_list())
+        print("type of VEGETAL_DECORATION : ", type(obj.VEGETAL_DECORATION))
         self.assertTrue(len(obj.VEGETAL_DECORATION) == 4)
+        self.assertTrue(utils.str_only_checking(obj.VEGETAL_DECORATION))
