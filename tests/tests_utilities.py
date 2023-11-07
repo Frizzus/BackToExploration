@@ -88,3 +88,13 @@ class TestUtilities(unittest.TestCase):
         test_types = [True, 4.7, "", 3]
 
         self.assertFalse(utils.str_only_checking(test_types))
+
+    def test_with_double(self):
+        test_list = ["ere", 3, "ere", "3"]
+        res_list = utils.no_double(test_list)
+        self.assertEqual(res_list, ["ere", 3, "3"])
+
+    def test_no_double(self):
+        test_list = ["ere", 3, "3"]
+        res_list = utils.no_double(test_list)
+        self.assertEqual(res_list, ["ere", 3, "3"])

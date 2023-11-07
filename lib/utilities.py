@@ -50,3 +50,12 @@ def str_only_checking(ls:list) -> bool:
         if item in ls_types:
             return False
     return True
+
+def no_double(ls:list) -> list:
+    res = []
+
+    for x in ls:
+        if x not in res:
+            res.append(x)
+
+    return res

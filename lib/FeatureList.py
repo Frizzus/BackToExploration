@@ -158,15 +158,15 @@ class FeatureList:
         Return the features array to use in a json biome
         """
         res = []
-        res.append(self.RAW_GENERATION)
-        res.append(self.LAKES)
-        res.append(self.LOCAL_MODIFICATIONS)
-        res.append(self.UNDERGROUND_STRUCTURES)
-        res.append(self.SURFACE_STRUCTURES)
-        res.append(self.STRONGHOLDS)
-        res.append(self.UNDERGROUND_ORES)
-        res.append(self.UNDERGROUND_DECORATION)
-        res.append(self.FLUID_SPRINGS)
-        res.append(self.VEGETAL_DECORATION)
-        res.append(self.TOP_LAYER_MODIFICATION)
+        res.append(utils.no_double(self.RAW_GENERATION))
+        res.append(utils.no_double(self.LAKES))
+        res.append(utils.no_double(self.LOCAL_MODIFICATIONS))
+        res.append(utils.no_double(self.UNDERGROUND_STRUCTURES))
+        res.append(utils.no_double(self.SURFACE_STRUCTURES))
+        res.append(utils.no_double(self.STRONGHOLDS))
+        res.append(utils.no_double(self.UNDERGROUND_ORES))
+        res.append(utils.no_double(self.UNDERGROUND_DECORATION))
+        res.append(utils.no_double(self.FLUID_SPRINGS))
+        res.append(utils.no_double(self.VEGETAL_DECORATION))
+        res.append(utils.no_double(self.TOP_LAYER_MODIFICATION))
         return res
