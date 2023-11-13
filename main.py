@@ -1,6 +1,18 @@
 import os, shutil, json, lib.bte_errors, logging
 from lib.EnvTemplate import EnvTemplate
 
+# detect and create program's config file
+
+try:
+    config = open("config.txt", "r")
+except:
+    config = open("config.txt", "x")
+    config.write(
+"""assets_path = assets/
+out_dir_path = ./
+do_tests = false
+""")
+
 try:
     logs = os.remove("logs.txt")
 except:
