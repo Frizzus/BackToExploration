@@ -8,9 +8,9 @@ try:
 except:
     config = open("config.txt", "x")
     config.write(
-"""assets_path = assets/
-out_dir_path = ./
-do_tests = false
+"""do_tests = false
+pack_format = 15
+description = Discover all the possibilities !
 """)
 
 try:
